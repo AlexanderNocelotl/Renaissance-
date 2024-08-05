@@ -1,99 +1,124 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, SafeAreaView, ScrollView, View, Text, Image, Platform } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function TabTwoScreen() {
+const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-    <ScrollView contentContainerStyle={styles.scrollView}>
-      <View style={styles.block2}> 
-         <View style={styles.block1}><Text> <Image source={require('../../assets/images/Nnote.png')} style={styles.nnote} /> </Text>
-         <Text > </Text>
-         </View>
-        <Text style={styles.text}>Blofdck 1</Text>
-      </View> 
-      <View style={styles.block}>
-        <Text style={styles.text}>Block 2</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>IMPORTANT TO DO</Text>
       </View>
-      <View style={styles.block}>
-        <Text style={styles.text}>Block 3</Text>
+      <View style={styles.card}>
+        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>Learn Our Music Creator</Text>
+          <Text style={styles.subText}>Difficulty: Starter</Text>
+          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Learn Now</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.block}>
-        <Text style={styles.text}>Block 4</Text>
+      <View style={styles.searchContainer}>
+        <Image source={{ uri: 'https://via.placeholder.com/20' }} style={styles.searchIcon} />
+        <Text style={styles.searchText}>Explore Concepts</Text>
+      </View>
+      <View style={styles.card}>
+        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>Learn Our Music Creator</Text>
+          <Text style={styles.subText}>Difficulty: Starter</Text>
+          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Learn Now</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.card}>
+        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>Learn Our Music Creator</Text>
+          <Text style={styles.subText}>Difficulty: Starter</Text>
+          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Learn Now</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
-  </SafeAreaView>
-);
+  );
 };
 
-
-
-
 const styles = StyleSheet.create({
-  block2: {
-backgroundColor: 'gray',
-width: '90%',
-    height: 150,
-  
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-    marginVertical: 10,
-
-  },
-  nnote:{
-width: 100,
-height: 100,
-  },
-  block1:{
-backgroundColor: 'white',
-height: 100,
-justifyContent: 'center',
-width: 200,
-  textAlign: 'center',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    position:'absolute',
-    
-
-  },
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#EAE6DF',
+    paddingTop:90,
+    paddingRight: 10,
+    paddingLeft: 10,
   },
-  scrollView: {
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  block: {
-    width: '90%',
-    height: 150,
-    backgroundColor: 'rgb(255, 0, 255)',
-    justifyContent: 'center',
-    alignItems: 'center',
+  header: {
+    backgroundColor: '#3D3D3D',
+    padding: 20,
     borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-    marginVertical: 10,
+    marginBottom: 20,
   },
-  text: {
+  headerText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  card: {
+    backgroundColor: '#3D3D3D',
+    borderRadius: 10,
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  textContainer: {
+    flex: 1,
+  },
+  title: {
+    color: '#FFFFFF',
     fontSize: 16,
-    color: '#000',
+    fontWeight: 'bold',
+  },
+  subText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+  },
+  button: {
+    backgroundColor: '#C36F63',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 20,
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+  searchText: {
+    fontSize: 16,
   },
 });
+
+export default App;

@@ -4,25 +4,22 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
-      initialRouteName="Homepage"
+      // initialRouteName="Homepage"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: true,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          href: null,
-        }}
-      />
+        headerShown: false,
+      }}
+    >
       <Tabs.Screen
         name="Homepage"
+
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
@@ -30,9 +27,8 @@ export default function TabLayout() {
           ), 
           tabBarLabel: "Home"
         }}
-        
       />
-       
+       {/* boo */}
       <Tabs.Screen
         name="Lessons"
         options={{
@@ -42,6 +38,16 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="Projects"
+        options={{
+          title: 'Projects',
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name={focused ? 'book-music' : 'book-music-outline'} size={28} color={color} />
+          ),
+        }}
+     />
     </Tabs>
   );
 }
