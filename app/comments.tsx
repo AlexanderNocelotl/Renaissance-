@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
+import {router} from "expo-router";
 
 const comments = [
   {
@@ -8,17 +10,17 @@ const comments = [
     avatar: require('../assets/images/Kalvin.jpg'),
   },
   {
-    user: "@H4rdstuckBr0nze",
+    user: "@Pa_pi",
     text: "AGREED!!!",
     avatar: require('../assets/images/Donovan.jpg'),
   },
   {
     user: "@MEL0",
-    text: "Truer words have never been spoken!!",
+    text: "AGREED!!!",
     avatar: require('../assets/images/Melo.jpg'),
   },
   {
-    user: "@DJ_TAY",
+    user: "@TATUN",
     text: "This is really good for only 3 months.",
     avatar: require('../assets/images/TayTay.jpg'),
   },
@@ -30,6 +32,8 @@ const comments = [
 ];
 
 const Comments = () => {
+  const navigation = useNavigation(); 
+
   const [songImage, setSongImage] = useState(require('../assets/images/HardAlbum.png'));
   const waveformImage = require('../assets/images/sound-wave.png');
 
@@ -37,10 +41,10 @@ const Comments = () => {
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity>
+        </View>
+        <TouchableOpacity onPress={() => router.navigate('./(tabs)/Homepage')}>
             <Text style={styles.backButton}>{'<'}</Text>
           </TouchableOpacity>
-        </View>
         <View style={styles.songDetailsContainer}>
           <View style={styles.textc}>
             <Text style={styles.songTitle}>Song Title: Untitled</Text>
@@ -166,8 +170,7 @@ const styles = StyleSheet.create({
   waveform: {
     width: '90%',
     height: 50,
-    backgroundColor: '#ddd',
-    borderRadius: 10,
+    resizeMode: 'contain',
   },
   interactionContainer: {
     flexDirection: 'row',
@@ -234,6 +237,9 @@ const styles = StyleSheet.create({
   replyButton: {
     color: '#fff',
   },
+  water:{
+    
+  }
 });
 
 export default Comments;
