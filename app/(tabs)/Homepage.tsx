@@ -9,68 +9,110 @@ import {
   ScrollView,
 } from "react-native";
 import { router } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Home = () => {
-  const data = [
-    {
-      image: require("../../assets/images/image 2.png"),
-      title: "Song Title: Place Holder",
-      creator: "Miguel",
-      datePosted: "Date Posted",
-      onPressPage: "comments",
-    },
-    {
-      image: require("../../assets/images/image 3.png"),
-      title: "Song Title: Place Holder",
-      creator: "Miguel",
-      datePosted: "Date Posted",
-      onPressPage: "comments",
-    },
-    {
-      image: require("../../assets/images/image 4.png"),
-      title: "Song Title: Place Holder",
-      creator: "Miguel",
-      datePosted: "Date Posted",
-      onPressPage: "comments",
-    },
-  ];
-
   return (
-    <ScrollView style={styles.content}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.profileCircle} />
-          <Text style={styles.welcomeText}>Welcome Back, Alexander</Text>
-          <TouchableOpacity style={styles.settingsIconContainer}>
-            <View style={styles.settingsIcon} />
-          </TouchableOpacity>
+    <ScrollView style={styles.container}>
+      <View style={styles.topContainer}>
+        <View>
+          <Ionicons style={styles.options} name="options" size={35} color="black" />
         </View>
-        {data.map((item, index) => (
-          <Pressable
-            onPress={() => {
-              router.push(item.onPressPage);
-            }}
-          >
-            <View key={index} style={styles.card}>
-              <Image source={item.image} style={styles.cardImage} />
-              <View style={styles.cardContent}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                <Text style={styles.cardCreator}>Creator: {item.creator}</Text>
-                <Text style={styles.cardDate}>{item.datePosted}</Text>
-                <View style={styles.audioControl}>
-                  <View style={styles.playButton}>
-                    <Text style={styles.playButtonText}>▶</Text>
-                  </View>
-                  <Image
-                    source={require("../../assets/images/sound-wave.png")}
-                    style={styles.audioWaveform}
-                  />
-                </View>
-              </View>
-            </View>
-          </Pressable>
-        ))}
+        <Text style={styles.welcome}>Weclome Back Jeffrey!</Text>
+        <Image
+        source={require("../../assets/images/chefprofile.png")}
+         style={styles.profile}
+         />
+         
       </View>
+      <View style={styles.containerDots}>
+        <View style={styles.dot}></View>
+        <View style={styles.dot1}></View>
+        <View style={styles.dot1}></View>
+        <View style={styles.dot1}></View>
+      </View>
+      <View>
+        <Text style={styles.trending}>Trending</Text>
+      </View>
+      <TouchableOpacity onPress={() => router.navigate("/comments")}>
+        <View style={styles.card}>
+          <Image
+            source={require("../../assets/images/CovArt1.png")}
+            style={styles.musicImg}
+          />
+
+          <View style={styles.textcard}>
+            <Text style={styles.textSongTitle}> Song Title: SUNDOWN</Text>
+            <Text style={styles.textCreator}>Creator: Helene Paquet</Text>
+            <Text style={styles.textDatePosted}>Date Posted 08/4/24</Text>
+
+            <Image
+              source={require("../../assets/images/playandwaves.png")}
+              style={styles.soundWave}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.navigate("/comments")}>
+        <View style={styles.card}>
+          <Image
+            source={require("../../assets/images/CovArt2.png")}
+            style={styles.musicImg}
+          />
+
+          <View style={styles.textcard}>
+            <Text style={styles.textSongTitle}> Song Title: Sphere</Text>
+            <Text style={styles.textCreator}>Creator: Jongho Baek </Text>
+            <Text style={styles.textDatePosted}>Date Posted 08/5/24</Text>
+
+            <Image
+              source={require("../../assets/images/playandwaves.png")}
+              style={styles.soundWave}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.navigate("/comments")}>
+        <View style={styles.card}>
+          <Image
+            source={require("../../assets/images/CovArt3.png")}
+            style={styles.musicImg}
+          />
+
+          <View style={styles.textcard}>
+            <Text style={styles.textSongTitle}> Song Title: Hustle</Text>
+            <Text style={styles.textCreator}>Creator: Goyathlay Radja </Text>
+            <Text style={styles.textDatePosted}>Date Posted 08/4/24</Text>
+
+            <Image
+              source={require("../../assets/images/playandwaves.png")}
+              style={styles.soundWave}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.navigate("/comments")}>
+        <View style={styles.card}>
+          <Image
+            source={require("../../assets/images/CovArt4.png")}
+            style={styles.musicImg}
+          />
+
+          <View style={styles.textcard}>
+            <Text style={styles.textSongTitle}> Song Title: Spaceman</Text>
+            <Text style={styles.textCreator}>Creator: LeTuan James </Text>
+            <Text style={styles.textDatePosted}>Date Posted 08/30/24</Text>
+
+            <Image
+              source={require("../../assets/images/playandwaves.png")}
+              style={styles.soundWave}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -81,97 +123,93 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECE7DE",
-    paddingTop: 90,
   },
-  header: {
+  topContainer: {
+    marginTop: 48,
     flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    marginBottom: 20,
+    justifyContent: "space-around",
   },
-  profileCircle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "#C4C4C4",
-    marginRight: 10,
+  options:{
+    marginTop:4,
   },
-  welcomeText: {
-    color: "black",
-    fontSize: 18,
-    flex: 1,
+  profile: {
+    backgroundColor: "blue",
+    width: 42,
+    height: 42,
+    borderRadius: 30,
   },
-  settingsIconContainer: {
-    padding: 10,
+  welcome: {
+    marginTop:8,
+    fontSize: 22,
+    fontFamily: `Kameron`,
   },
-  settingsIcon: {
-    width: 24,
+  containerDots: {
+    marginTop: 17.5,
+    flexDirection: "row",
+  },
+  dot: {
+    backgroundColor: "#34383C",
     height: 24,
-    backgroundColor: "#C4C4C4",
-    borderRadius: 12,
+    width: 24,
+    borderRadius: 15,
+    marginLeft:113.5,
+  },
+  dot1: {
+    backgroundColor: "#ECE7DE",
+    height: 24,
+    width: 24,
+    borderRadius: 15,
+    borderWidth:3,
+    borderColor:'#9C9C9C',
+    marginLeft:36,
+  },
+  trending:{
+    textAlign: "center",
+    fontSize: 32,
+    marginBottom: 12,
+    marginTop: 24,
   },
   card: {
+    alignSelf: "center",
     flexDirection: "row",
-    backgroundColor: "#2E2E2E",
-    borderRadius: 10,
-    marginHorizontal: 20,
-    marginBottom: 40,
-    overflow: "hidden",
+    width: 382,
+    height: 158,
+    backgroundColor: "#34383C",
+    borderRadius: 16,
+    marginBottom:20,
   },
-  cardImage: {
-    width: 100,
-    height: 120,
+  musicImg: {
+    height: 126,
+    width: 126,
+    marginTop: 13,
+    marginLeft: 16,
+    marginBottom: 13,
+    borderRadius: 12.6,
+    borderWidth: 2.5,
+    borderColor: "white",
   },
-  cardContent: {
-    flex: 1,
-    padding: 10,
+  play: {
+    marginLeft: 22,
   },
-  cardTitle: {
+  soundWave: {
+    marginTop: 24,
+  },
+  textcard: {
+    flexDirection: "column",
     color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
+    marginTop: 16,
+    marginLeft: 24,
   },
-  cardCreator: {
+  textSongTitle: {
     color: "white",
-    fontSize: 14,
-    marginBottom: 5,
+    fontSize: 15,
   },
-  cardDate: {
-    color: "white",
+  textCreator: {
     fontSize: 12,
-    marginBottom: 10,
-  },
-  audioControl: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  playButton: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: "#B95858",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 10,
-  },
-  playButtonText: {
     color: "white",
-    fontWeight: "bold",
   },
-  audioWaveform: {
-    flex: 1,
-    height: "50%",
-    borderRadius: 5,
-
-    overflow: "hidden",
-    alignItems: "center",
-    position: "relative",
-    width: "50%",
-    // padding:10,
-  },
-  content: {
-    flex: 1,
-    backgroundColor: "#ECE7DE",
+  textDatePosted: {
+    fontSize: 11,
+    color: "white",
   },
 });

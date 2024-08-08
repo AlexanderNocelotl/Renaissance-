@@ -7,8 +7,8 @@ import Home from './(tabs)/Homepage'
 const index = () => {
   return (
     // <SurveyPage/>
-    <Daw/>
-   
+    
+   <Home/>
     // <View>
     //   <Text>Hello World!</Text>
     // </View>

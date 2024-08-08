@@ -9,6 +9,7 @@ function comments() {
         <Text>Creator: Miguel</Text>
         <Text>Duration 1:58</Text>
      </View>
+     
         <Image source={require("../assets/images/Group 121.png")}/>
         <View>
           <Image source={require("../assets/images/Group120.png")}/>
