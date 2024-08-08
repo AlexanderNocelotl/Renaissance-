@@ -1,124 +1,155 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 
 const App = () => {
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>IMPORTANT TO DO</Text>
-      </View>
-      <View style={styles.card}>
-        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Learn Our Music Creator</Text>
-          <Text style={styles.subText}>Difficulty: Starter</Text>
-          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
+    return (
+        <View style={styles.container}>
+            {/* Search Bar */}
+            <View style={styles.searchContainer}>
+                <TextInput
+                    placeholder="Lessons"
+                    style={styles.searchInput}
+                />
+            </View>
+
+            {/* Circles */}
+            <View style={styles.circleContainer}>
+                <View style={styles.blackCircle} />
+                <View style={styles.grayCircle} />
+            </View>
+
+            {/* "Important To Do" Section */}
+            <Text style={styles.headerText}>IMPORTANT TO DO</Text>
+
+            {/* Lessons List */}
+            <View style={styles.lessonContainer}>
+                <LessonCard
+                    title="How Does Our Digital Audio Workshop Work?"
+                    difficulty="Starter"
+                    time="10 minutes"
+                />
+                <LessonCard
+                    title="D-Minor Chord"
+                    difficulty="Beginner"
+                    time="30 minutes"
+                />
+                <LessonCard
+                    title="Basic Chords on Piano"
+                    difficulty="Beginner"
+                    time="40 minutes"
+                />
+                <LessonCard
+                    title="Basic Chords on Piano"
+                    difficulty="Beginner"
+                    time="40 minutes"
+                />
+            </View>
         </View>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Learn Now</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.searchContainer}>
-        <Image source={{ uri: 'https://via.placeholder.com/20' }} style={styles.searchIcon} />
-        <Text style={styles.searchText}>Explore Concepts</Text>
-      </View>
-      <View style={styles.card}>
-        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Learn Our Music Creator</Text>
-          <Text style={styles.subText}>Difficulty: Starter</Text>
-          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
+    );
+};
+
+const LessonCard = ({ title, difficulty, time }) => {
+    return (
+        <View style={styles.card}>
+            <View style={styles.iconContainer}>
+                <Image source={require('../../assets/images/logoicon.png')} style={styles.icon} />
+            </View>
+            <View style={styles.textContainer}>
+                <Text style={styles.lessonTitle}>{title}</Text>
+                <Text style={styles.lessonDetails}>Difficulty: {difficulty}</Text>
+                <Text style={styles.lessonDetails}>Time to completion: {time}</Text>
+                <TouchableOpacity style={styles.learnButton}>
+                    <Text style={styles.learnButtonText}>Learn Now</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Learn Now</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.card}>
-        <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.icon} />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Learn Our Music Creator</Text>
-          <Text style={styles.subText}>Difficulty: Starter</Text>
-          <Text style={styles.subText}>Time to completion: 10 minutes</Text>
-        </View>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Learn Now</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EAE6DF',
-    paddingTop:90,
-    paddingRight: 10,
-    paddingLeft: 10,
-  },
-  header: {
-    backgroundColor: '#3D3D3D',
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-  headerText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  card: {
-    backgroundColor: '#3D3D3D',
-    borderRadius: 10,
-    padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  icon: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-  },
-  textContainer: {
-    flex: 1,
-  },
-  title: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  subText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-  },
-  button: {
-    backgroundColor: '#C36F63',
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    padding: 10,
-    marginBottom: 20,
-  },
-  searchIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
-  },
-  searchText: {
-    fontSize: 16,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#F5F5F5',
+        paddingHorizontal: 20,
+    },
+    searchContainer: {
+        marginTop: 40,
+        marginBottom: 10,
+    },
+    searchInput: {
+        backgroundColor: 'white',
+        borderRadius: 20,
+        height: 40,
+        paddingLeft: 40,  // adjust padding for the search icon
+        borderColor: '#000',
+        borderWidth: 1,
+    },
+    circleContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 20,
+    },
+    blackCircle: {
+        height: 40,
+        width: 40,
+        backgroundColor: '#000',
+        borderRadius: 20,
+        marginHorizontal: 10,
+    },
+    grayCircle: {
+        height: 40,
+        width: 40,
+        backgroundColor: '#C0C0C0',
+        borderRadius: 20,
+        marginHorizontal: 10,
+    },
+    headerText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginVertical: 10,
+    },
+    lessonContainer: {
+        flex: 1,
+    },
+    card: {
+        flexDirection: 'row',
+        backgroundColor: '#35393E',
+        borderRadius: 10,
+        padding: 20,
+        marginBottom: 20,
+    },
+    iconContainer: {
+        marginRight: 20,
+    },
+    icon: {
+        height: 50,
+        width: 50,
+    },
+    textContainer: {
+        flex: 1,
+    },
+    lessonTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 5,
+    },
+    lessonDetails: {
+        color: 'white',
+        marginBottom: 5,
+    },
+    learnButton: {
+        marginTop: 10,
+        backgroundColor: '#B95858',
+        borderRadius: 10,
+        paddingVertical: 10,
+        alignItems: 'center',
+    },
+    learnButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
 });
 
 export default App;

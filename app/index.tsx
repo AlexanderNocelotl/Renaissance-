@@ -3,12 +3,13 @@ import React from 'react'
 import SurveyPage from '@/app/(auth)/survey'
 import Daw from '@/app/Daw'
 import Home from './(tabs)/Homepage'
+import Survey from './(auth)/survey'
 
 const index = () => {
   return (
     // <SurveyPage/>
     
-   <Daw/>
+   <Survey/>
     // <View>
     //   <Text>Hello World!</Text>
     // </View>

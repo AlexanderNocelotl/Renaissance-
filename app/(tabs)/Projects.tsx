@@ -1,101 +1,169 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, } from 'react-native';
-import {router} from 'expo-router'
-
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { router } from "expo-router";
 const App = () => {
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Your Library</Text>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.waveform}></View>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Song Title: Untitled</Text>
-          <Text style={styles.subText}>User: You</Text>
-          <Text style={styles.subText}>Created: 07/21/24</Text>
+    return (
+        <View style={styles.container}>
+            {/* Header */}
+            <Text style={styles.headerText}>Drafts</Text>
+
+            {/* Search Bar */}
+            <View style={styles.searchContainer}>
+                <TextInput
+                    placeholder="Name..."
+                    style={styles.searchInput}
+                />
+            </View>
+
+            {/* Draft List */}
+            <View style={styles.draftContainer}>
+                <DraftCard
+                    title="Song Title: Summer Rise"
+                    lastEdited="07/21/24"
+                />
+                <DraftCard
+                    title="Song Title: Man In Snow"
+                    lastEdited="06/21/24"
+                />
+                <DraftCard
+                    title="Song Title: Moonshine"
+                    lastEdited="06/03/24"
+                />
+            </View>
+
+            {/* Create New Button */}
+            <TouchableOpacity style={styles.createButton} onPress={() => router.navigate("/Daw")}>
+                <Text style={styles.createButtonText}>Create New</Text> 
+                
+            </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.waveform}></View>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Song Title: Untitled</Text>
-          <Text style={styles.subText}>User: You</Text>
-          <Text style={styles.subText}>Created: 07/21/24</Text>
+    );
+};
+
+const DraftCard = ({ title, lastEdited }) => {
+    return (
+        <View style={styles.card}>
+            <View style={styles.cardContent}>
+                <View style={styles.leftSection}>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.subtitle}>Last Edited: {lastEdited}</Text>
+                    {/* Replace with your waveform image */}
+                    <Image source={require('../../assets/images/waveplusplay.png')} style={styles.waveform} />
+                </View>
+                <View style={styles.rightSection}>
+                    {/* Replace with your star icon */}
+                    <Image source={require('../../assets/images/star1.png')} style={styles.starIcon} />
+                </View>
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.publishButton}>
+                    <Text style={styles.buttonText}>Publish</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.editButton}>
+                    <Text style={styles.buttonText}>Edit</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.waveform}></View>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Song Title: Untitled</Text>
-          <Text style={styles.subText}>User: You</Text>
-          <Text style={styles.subText}>Created: 07/21/24</Text>
-        </View>
-      </View>
-      <TouchableOpacity style={styles.createButton} onPress = {() => router.navigate('/Daw')}>
-        <Text style={styles.createButtonText}>create new</Text>
-      </TouchableOpacity>
-    </ScrollView>
-  );
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EAE6DF',
-    paddingTop: 90,
-    paddingRight:10,
-    paddingLeft:10,
-  },
-  header: {
-    backgroundColor: '#D3D3D3',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  headerText: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  card: {
-    backgroundColor: '#D3D3D3',
-    borderRadius: 10,
-    padding: 20,
-    marginBottom: 20,
-  },
-  waveform: {
-    height: 30,
-    backgroundColor: '#000000',
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  textContainer: {
-    marginTop: 10,
-  },
-  title: {
-    color: '#000000',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  subText: {
-    color: '#000000',
-    fontSize: 14,
-  },
-  createButton: {
-    backgroundColor: '#D3D3D3',
-    borderRadius: 20,
-    paddingVertical: 10,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  createButtonText: {
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#F5F5F5',
+        paddingHorizontal: 20,
+    },
+    headerText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginVertical: 20,
+        marginTop:50,
+    },
+    searchContainer: {
+        marginBottom: 20,
+    },
+    searchInput: {
+        backgroundColor: 'white',
+        borderRadius: 20,
+        height: 40,
+        paddingLeft: 40, // adjust padding for the search icon
+        borderColor: '#000',
+        borderWidth: 1,
+    },
+    draftContainer: {
+        flex: 1,
+    },
+    card: {
+        backgroundColor: '#34383C',
+        borderRadius: 10,
+        padding: 20,
+        marginBottom: 20,
+    },
+    cardContent: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    leftSection: {
+        flex: 1,
+    },
+    rightSection: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 5,
+    },
+    subtitle: {
+        color: 'white',
+        marginBottom: 15,
+    },
+    waveform: {
+        width: 100,
+        height: 40,
+        resizeMode: 'contain',
+    },
+    starIcon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20,
+    },
+    publishButton: {
+        backgroundColor: '#B95858',
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+    },
+    editButton: {
+        backgroundColor: '#B95858',
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
+    createButton: {
+        backgroundColor: '#B95858',
+        borderRadius: 10,
+        paddingVertical: 15,
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    createButtonText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
 });
 
 export default App;

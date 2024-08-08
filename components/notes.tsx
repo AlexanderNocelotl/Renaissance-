@@ -20,9 +20,9 @@ const Notes: React.FC<NoteProp> = (props: NoteProp) => {
 
     return (
         <DraxView
-            style={[styles.notes, isClicked ? styles.clickedNotes : null]}
-            onDragStart={() => console.log(`start drag: ${props.noteLetter}`)}
-            payload={props.noteLetter}
+            style={[styles.notes]}
+            onDragStart={() => console.log('start drag')}
+            payload="world"
         >
             <TouchableOpacity onPress={toggleClicked} style={styles.touchable}>
                 <Text style={styles.letter}>{props.noteLetter}</Text>

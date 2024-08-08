@@ -1,5 +1,12 @@
 import React from "react";
-import {View,Text,Image,StyleSheet,Animated,TouchableOpacity,} from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
 import Foundation from "@expo/vector-icons/Foundation";
 import Notes from "@/components/notes";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -26,11 +33,27 @@ const Daw = () => {
           color="white"
         />
       </View>
-      {/* <GestureHandlerRootView>
-      <DraxView>
+      
+      <GestureHandlerRootView>
+        <View>
+          <DraxProvider>
+            <DraxView
+              style={styles.receiver}
+              onReceiveDragEnter={({ dragged: { payload } }) => {
+                console.log(`hello ${payload}`);
+              }}
+              onReceiveDragExit={({ dragged: { payload } }) => {
+                console.log(`goodbye ${payload}`);
+              }}
+              onReceiveDragDrop={({ dragged: { payload } }) => {
+                console.log(`received ${payload}`);
+              }}
+            />
+          </DraxProvider>
+        </View>
+      </GestureHandlerRootView>
+      
 
-      </DraxView>
-      </GestureHandlerRootView> */}
       <View style={styles.bottomBorder}>
         <View style={styles.instrument}></View>
         <View style={styles.octave}></View>
@@ -57,6 +80,11 @@ const styles = StyleSheet.create({
     width: 64,
     backgroundColor: "#35393E",
     alignItems: "center",
+  },
+  receiver: {
+    backgroundColor: "white",
+    width: 251,
+    height: 932,
   },
   bottomBorder: {
     backgroundColor: "#35393E",
@@ -102,7 +130,7 @@ const styles = StyleSheet.create({
     height: 932,
     width: 3,
   },
-  borderline2:{
+  borderline2: {
     marginLeft: 70,
     backgroundColor: "black",
     height: 932,
