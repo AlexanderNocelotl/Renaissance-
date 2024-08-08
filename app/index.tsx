@@ -8,7 +8,7 @@ const index = () => {
   return (
     // <SurveyPage/>
     
-   <Home/>
+   <Daw/>
     // <View>
     //   <Text>Hello World!</Text>
     // </View>

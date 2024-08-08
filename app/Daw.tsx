@@ -26,6 +26,9 @@ const Daw = () => {
           color="white"
         />
       </View>
+      <DraxView>
+        
+      </DraxView>
       <View style={styles.bottomBorder}>
         <View style={styles.instrument}></View>
         <View style={styles.octave}></View>
