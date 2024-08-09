@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import {router} from "expo-router";
 
-const App = () => {
+
+const Lesson = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -29,7 +31,7 @@ const App = () => {
           <Text style={styles.subText}>Difficulty: Starter</Text>
           <Text style={styles.subText}>Time to completion: 10 minutes</Text>
         </View>
-        <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={() => router.navigate('../Lesson1')}>
           <Text style={styles.buttonText}>Learn Now</Text>
         </TouchableOpacity>
       </View>
@@ -121,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Lesson;

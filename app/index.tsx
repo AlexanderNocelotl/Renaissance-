@@ -3,11 +3,12 @@ import React from 'react'
 import SurveyPage from '@/app/(auth)/survey'
 import Daw from '@/app/Daw'
 import Home from './(tabs)/Homepage'
+import App from './(tabs)/Lessons'
 
 const index = () => {
   return (
     // <SurveyPage/>
-    <Home/>
+    <App/>
    
     // <View>
     //   <Text>Hello World!</Text>
