@@ -19,7 +19,7 @@ const Daw = () => {
     //This code is for home icon and the ruler and pause icon as well as container for all and top black border
     <View style={styles.container}>
       <View style={styles.topBorder}>
-        <TouchableOpacity onPress={() => router.navigate("/Homepage")}>
+        <TouchableOpacity onPress={() => router.navigate("/Projects")}>
           <Foundation style={styles.home} name="home" size={40} color="white" />
         </TouchableOpacity>
         <Image
@@ -33,6 +33,9 @@ const Daw = () => {
           color="white"
         />
       </View>
+
+      <View style={styles.borderline1}></View>
+      <View style={styles.borderline1}></View>
       
       <GestureHandlerRootView>
         <View>

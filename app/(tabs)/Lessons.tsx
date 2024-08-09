@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     searchContainer: {
-        marginTop: 40,
+        marginTop: 60,
         marginBottom: 10,
     },
     searchInput: {
