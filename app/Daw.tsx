@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   View,
   Text,
@@ -15,6 +15,24 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { router } from "expo-router";
 
 const Daw = () => {
+  const marginTopAnim = useRef(new Animated.Value(600)).current;
+
+  // useEffect(() => {
+  //   Animated.timing(marginTopAnim, {
+  //     toValue: -140, // Change this value to the desired marginTop
+  //     duration: 4000, // Duration of the animation in milliseconds
+  //     useNativeDriver: false, // `false` because we're animating a layout property
+  //   }).start();
+  // }, [marginTopAnim]);
+
+  const showLineAnimation = () => {
+    Animated.timing(marginTopAnim, {
+      toValue: -250, // Change this value to the desired marginTop
+      duration: 5500, // Duration of the animation in milliseconds
+      useNativeDriver: false, // `false` because we're animating a layout property
+    }).start();
+  };
+
   return (
     //This code is for home icon and the ruler and pause icon as well as container for all and top black border
     <View style={styles.container}>
@@ -26,17 +44,18 @@ const Daw = () => {
           source={require("../assets/images/lines.png")}
           style={styles.lines}
         />
-        <Ionicons
-          style={styles.pause}
-          name="pause-circle"
-          size={50}
-          color="white"
-        />
+        <TouchableOpacity onPress={showLineAnimation}>
+          <Ionicons
+            style={styles.pause}
+            name="pause-circle"
+            size={50}
+            color="white"
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.borderline1}></View>
       <View style={styles.borderline1}></View>
-      
       <GestureHandlerRootView>
         <View>
           <DraxProvider>
@@ -54,13 +73,15 @@ const Daw = () => {
             />
           </DraxProvider>
         </View>
+        <Animated.View
+          style={[styles.yellowLine, { marginTop: marginTopAnim }]}
+        />
       </GestureHandlerRootView>
-      
 
       <View style={styles.bottomBorder}>
         <View style={styles.instrument}></View>
         <View style={styles.octave}></View>
-        <Notes/>
+        <Notes />
       </View>
     </View>
   );
@@ -73,6 +94,18 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  yellowLine: {
+    borderWidth: 2,
+    // height: "100%",
+    // width: 300,
+    borderColor: "#FFD338",
+
+    height: 480,
+    alignSelf: "center",
+    transform: [{ rotate: "90deg" }],
+    // bottom: 0,
+    position: "absolute",
   },
   home: {
     transform: [{ rotate: "270deg" }],
