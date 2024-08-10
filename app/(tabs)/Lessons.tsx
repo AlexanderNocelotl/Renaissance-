@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import {router} from "expo-router";
+
 
 const App = () => {
     return (
@@ -58,7 +60,7 @@ const LessonCard = ({ title, difficulty, time }) => {
                 <Text style={styles.lessonTitle}>{title}</Text>
                 <Text style={styles.lessonDetails}>Difficulty: {difficulty}</Text>
                 <Text style={styles.lessonDetails}>Time to completion: {time}</Text>
-                <TouchableOpacity style={styles.learnButton}>
+                <TouchableOpacity style={styles.learnButton} onPress={() => router.navigate('../Lesson1')}>
                     <Text style={styles.learnButtonText}>Learn Now</Text>
                 </TouchableOpacity>
             </View>

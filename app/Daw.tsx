@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   View,
   Text,
@@ -15,28 +15,55 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { router } from "expo-router";
 
 const Daw = () => {
+  const marginTopAnim = useRef(new Animated.Value(600)).current;
+
+  // useEffect(() => {
+  //   Animated.timing(marginTopAnim, {
+  //     toValue: -140, // Change this value to the desired marginTop
+  //     duration: 4000, // Duration of the animation in milliseconds
+  //     useNativeDriver: false, // `false` because we're animating a layout property
+  //   }).start();
+  // }, [marginTopAnim]);
+
+  const showLineAnimation = () => {
+    Animated.timing(marginTopAnim, {
+      toValue: -250, // Change this value to the desired marginTop
+      duration: 5500, // Duration of the animation in milliseconds
+      useNativeDriver: false, // `false` because we're animating a layout property
+    }).start();
+  };
+
   return (
     //This code is for home icon and the ruler and pause icon as well as container for all and top black border
     <View style={styles.container}>
       <View style={styles.topBorder}>
+       <View style={styles.saveButton}>
+        <Text style={styles.saveButtonText}>Save</Text>
+       </View>
         <TouchableOpacity onPress={() => router.navigate("/Projects")}>
-          <Foundation style={styles.home} name="home" size={40} color="white" />
+          <View style={styles.exitButton}>
+            <Text style={styles.exitButtonText}>Exit</Text>
+          </View>
         </TouchableOpacity>
+        <View>
+          <Text></Text>
+          </View>
         <Image
           source={require("../assets/images/lines.png")}
           style={styles.lines}
         />
-        <Ionicons
-          style={styles.pause}
-          name="pause-circle"
-          size={50}
-          color="white"
-        />
+        <TouchableOpacity onPress={showLineAnimation}>
+          <Ionicons
+            style={styles.pause}
+            name="pause-circle"
+            size={50}
+            color="white"
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.borderline1}></View>
       <View style={styles.borderline1}></View>
-      
       <GestureHandlerRootView>
         <View>
           <DraxProvider>
@@ -54,13 +81,19 @@ const Daw = () => {
             />
           </DraxProvider>
         </View>
+        <Animated.View
+          style={[styles.yellowLine, { marginTop: marginTopAnim }]}
+        />
       </GestureHandlerRootView>
-      
 
       <View style={styles.bottomBorder}>
-        <View style={styles.instrument}></View>
-        <View style={styles.octave}></View>
-        <Notes/>
+        <View style={styles.instrument}>
+          <Text style={styles.instrText}>Guitar</Text>
+        </View>
+        <View style={styles.octave}>
+          <Text style={styles.octText}>Octave:3</Text>
+        </View>
+        <Notes />
       </View>
     </View>
   );
@@ -74,10 +107,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  home: {
+  yellowLine: {
+    borderWidth: 2,
+    // height: "100%",
+    // width: 300,
+    borderColor: "#FFD338",
+
+    height: 480,
+    alignSelf: "center",
+    transform: [{ rotate: "90deg" }],
+    // bottom: 0,
+    position: "absolute",
+  },
+  exitButton:{
+    backgroundColor:'#FF827A',
+    height:25,
+    width:85,
     transform: [{ rotate: "270deg" }],
     marginTop: 50,
+    textAlign:'center',
   },
+  exitButtonText:{
+    textAlign:'center',
+    marginTop:4,
+    fontWeight: 'bold',
+  },
+  
+
   topBorder: {
     height: 942,
     width: 64,
@@ -102,6 +158,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#ECE7DE",
     borderRadius: 15,
   },
+  instrText:{
+    fontSize:15,
+    fontWeight: 'bold',
+    marginTop:50,
+    transform: [{ rotate: "270deg" }],
+  },
   octave: {
     marginTop: 24,
     marginLeft: 20,
@@ -110,12 +172,19 @@ const styles = StyleSheet.create({
     width: 80,
     borderRadius: 15,
   },
+  octText:{
+    fontSize:15,
+    fontWeight: 'bold',
+    marginTop:70,
+    transform: [{ rotate: "270deg" }],
+  },
   notes: {
     marginTop: 33,
   },
   lines: {
     marginTop: 360,
     transform: [{ rotate: "270deg" }],
+    marginLeft:20,
   },
   pause: {
     transform: [{ rotate: "270deg" }],

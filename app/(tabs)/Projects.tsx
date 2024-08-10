@@ -4,7 +4,7 @@ import { router } from "expo-router";
 const App = () => {
     return (
         <View style={styles.container}>
-            {/* Header */}
+            
             <Text style={styles.headerText}>Drafts</Text>
 
             {/* Search Bar */}
@@ -14,6 +14,12 @@ const App = () => {
                     style={styles.searchInput}
                 />
             </View>
+
+             
+             <TouchableOpacity style={styles.createButton} onPress={() => router.navigate("/Daw")}>
+                <Text style={styles.createButtonText}>Create New</Text> 
+                
+            </TouchableOpacity>
 
             {/* Draft List */}
             <View style={styles.draftContainer}>
@@ -31,11 +37,7 @@ const App = () => {
                 />
             </View>
 
-            {/* Create New Button */}
-            <TouchableOpacity style={styles.createButton} onPress={() => router.navigate("/Daw")}>
-                <Text style={styles.createButtonText}>Create New</Text> 
-                
-            </TouchableOpacity>
+           
         </View>
     );
 };
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginVertical: 20,
-        marginTop:50,
+        marginTop:60,
     },
     searchContainer: {
         marginBottom: 20,
@@ -93,11 +95,15 @@ const styles = StyleSheet.create({
     },
     draftContainer: {
         flex: 1,
+        
     },
     card: {
         backgroundColor: '#34383C',
-        borderRadius: 10,
-        padding: 20,
+        borderRadius: 25,
+       width:360,
+       height:158,
+       paddingTop:20,
+       paddingBottom:20,
         marginBottom: 20,
     },
     cardContent: {

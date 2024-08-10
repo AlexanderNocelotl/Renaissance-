@@ -35,6 +35,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="comments" options={{headerShown: false}} />
         <Stack.Screen name="Daw" options={{headerShown: false}}/>
+        <Stack.Screen name="Lesson1" options={{headerShown: false}}/>
       </Stack>
     </ThemeProvider>
   );

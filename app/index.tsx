@@ -9,7 +9,7 @@ const index = () => {
   return (
     // <SurveyPage/>
     
-   <Survey/>
+   <Home/>
     // <View>
     //   <Text>Hello World!</Text>
     // </View>
